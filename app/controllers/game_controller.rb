@@ -26,6 +26,25 @@ class GameController < ApplicationController
       @outcome = "won"
     end
 
+    @all_moves = Move.all
+    new_row = Move.new
+    new_row.computer_move = @computer_move
+    new_row.user_move = @user_move
+    if @outcome == "won"
+      new_row.computer_wins = 0
+      new_row.user_wins = 1
+      new_row.tie = 0
+    elsif @outcome == "lost"
+      new_row.computer_wins = 1
+      new_row.user_wins = 0
+      new_row.tie = 0
+    else
+      new_row.computer_wins = 0
+      new_row.user_wins = 0
+      new_row.tie = 1
+    end
+    new_row.save
+
 
     render("move.html.erb")
 
