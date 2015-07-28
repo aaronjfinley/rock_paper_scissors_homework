@@ -114,7 +114,7 @@
           <th>Computer Wins</th>
           <th>Tie</th>
         </tr>
-          <% @all_moves.each do |move| %>
+          <% @all_moves.reverse.each do |move| %>
 
             <tr>
               <td><%= move.user_move %></td>
